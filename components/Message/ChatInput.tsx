@@ -1,7 +1,8 @@
 "use client";
 
+import { IMessageDetail } from "@/interfaces/ChatInputType";
 import { PaperPlan } from "@/svg/Icons";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useId, useState } from "react";
 
 const ChatInput = () => {
   const [message, setMessage] = useState("");
@@ -9,10 +10,32 @@ const ChatInput = () => {
     const { value } = e.target;
     setMessage(value);
   };
-  const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
+
+  const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const newMsg = message;
+    const msgDetails: IMessageDetail = {
+      id: Math.floor(Math.random() * Date.now()).toString(36),
+      message: newMsg,
+      created_at: Date.now(),
+      username: "dome",
+      profileImgURL: "https://avatars.githubusercontent.com/u/66314482?v=4",
+      email: "dome@sc.com",
+    };
+    await handleCreateMessage(msgDetails);
     setMessage("");
   };
+
+  const handleCreateMessage = async (msg: IMessageDetail) => {
+    const res = await fetch("/api/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: msg }),
+    });
+    const data = await res.json();
+    console.log(data);
+  };
+
   return (
     <footer className="fixed bottom-0 w-screen z-50 bg-white rounded-t-3xl p-6 shadow-sm">
       <form
