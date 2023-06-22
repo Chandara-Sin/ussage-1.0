@@ -6,6 +6,7 @@ import { ChangeEvent, FormEvent, useId, useState } from "react";
 
 const ChatInput = () => {
   const [message, setMessage] = useState("");
+  const id = useId();
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setMessage(value);
@@ -15,7 +16,7 @@ const ChatInput = () => {
     e.preventDefault();
     const newMsg = message;
     const msgDetails: IMessageDetail = {
-      id: Math.floor(Math.random() * Date.now()).toString(36),
+      id,
       message: newMsg,
       created_at: Date.now(),
       username: "dome",
