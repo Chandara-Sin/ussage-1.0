@@ -1,11 +1,15 @@
 "use client";
 
+import fetcher from "@/api/message";
 import { IMessageDetail } from "@/interfaces/ChatInputType";
 import { PaperPlan } from "@/svg/Icons";
 import { ChangeEvent, FormEvent, useId, useState } from "react";
+import useSWR from "swr";
 
 const ChatInput = () => {
   const [message, setMessage] = useState("");
+  const { data, error, mutate } = useSWR("/api/messages", fetcher);
+
   const id = useId();
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -33,8 +37,11 @@ const ChatInput = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: msg }),
     });
-    const data = await res.json();
-    console.log(data);
+    const { message } = await res.json();
+    await mutate([...data, message], {
+      optimisticData: [...data, message],
+      rollbackOnError: true,
+    });
   };
 
   return (
