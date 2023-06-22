@@ -9,8 +9,8 @@ import useSWR from "swr";
 const ChatInput = () => {
   const [message, setMessage] = useState("");
   const { data, error, mutate } = useSWR("/api/messages", fetcher);
-
   const id = useId();
+
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setMessage(value);
@@ -38,8 +38,11 @@ const ChatInput = () => {
       body: JSON.stringify({ message: msg }),
     });
     const { message } = await res.json();
-    await mutate([...data, message], {
-      optimisticData: [...data, message],
+    const optimisticData: IMessageDetail[] = data?.length
+      ? [...data, message]
+      : [];
+    await mutate(optimisticData, {
+      optimisticData,
       rollbackOnError: true,
     });
   };

@@ -19,7 +19,7 @@ const GET = async (_: Request) => {
     const res = await redis.hvals("messages");
     const messages: IMessageDetail[] = res
       .map((msg) => JSON.parse(msg))
-      .sort((a, b) => b.created_at - a.created_at);
+      .sort((a, b) => a.created_at - b.created_at);
     return NextResponse.json({ messages }, { status: 200 });
   } catch (error) {
     NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
