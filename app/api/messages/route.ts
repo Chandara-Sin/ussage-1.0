@@ -1,3 +1,4 @@
+import { IMessageDetail } from "@/interfaces/ChatInputType";
 import redis from "@/store";
 import { NextResponse } from "next/server";
 import { v4 as uuid } from "uuid";
@@ -13,4 +14,16 @@ const POST = async (_req: Request) => {
   }
 };
 
-export { POST };
+const GET = async (_: Request) => {
+  try {
+    const res = await redis.hvals("messages");
+    const messages: IMessageDetail[] = res
+      .map((msg) => JSON.parse(msg))
+      .sort((a, b) => b.created_at - a.created_at);
+    return NextResponse.json({ messages }, { status: 200 });
+  } catch (error) {
+    NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
+  }
+};
+
+export { POST, GET };
