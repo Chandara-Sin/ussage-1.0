@@ -22,8 +22,8 @@ const Message = ({ msg }: { msg: IMessageDetail }) => {
         />
       </figure>
       <figure>
-        <div className="flex items-end">
-          <div
+        <section className="flex items-end">
+          <figure
             className={`w-fit px-3 py-2 rounded-lg  ${
               isUser ? "bg-sky-500 ml-auto order-2" : " bg-white"
             }`}
@@ -31,7 +31,7 @@ const Message = ({ msg }: { msg: IMessageDetail }) => {
             <p className={`${isUser ? "text-white" : "text-gray-700"}`}>
               {message}
             </p>
-          </div>
+          </figure>
           <p
             className={`text-[0.65rem] italic px-2 text-gray-300 ${
               isUser ? "text-right" : ""
@@ -39,14 +39,15 @@ const Message = ({ msg }: { msg: IMessageDetail }) => {
           >
             {new Date(msg.created_at).toLocaleString()}
           </p>
-        </div>
+        </section>
       </figure>
     </article>
   );
 };
 
-const MessageSection = () => {
+const MessageSection = ({ initMessage }: { initMessage: IMessageDetail[] }) => {
   const { data, mutate } = useSWR("/api/messages", fetcher);
+  const messageList = data || initMessage;
 
   useEffect(() => {
     const channel = pusher.client.subscribe("message");
@@ -69,7 +70,7 @@ const MessageSection = () => {
 
   return (
     <section className="overflow-y-scroll px-2 pt-3 pb-28 space-y-5">
-      {data?.map((msg, i) => (
+      {messageList.map((msg, i) => (
         <Message msg={msg} key={i} />
       ))}
     </section>
