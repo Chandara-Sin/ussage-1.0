@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "encoding": "^0.1.13",
     "ioredis": "^5.3.2",
     "next": "^13.4.6",
     "next-auth": "^4.22.1",

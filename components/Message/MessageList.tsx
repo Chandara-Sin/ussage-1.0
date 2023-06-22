@@ -4,6 +4,8 @@ import fetcher from "@/api/message";
 import useSWR from "swr";
 import Image from "next/image";
 import { IMessageDetail } from "@/interfaces/ChatInputType";
+import { useEffect } from "react";
+import pusher from "@/pusher";
 
 const Message = ({ msg }: { msg: IMessageDetail }) => {
   const isUser = true;
@@ -44,7 +46,27 @@ const Message = ({ msg }: { msg: IMessageDetail }) => {
 };
 
 const MessageSection = () => {
-  const { data } = useSWR("/api/messages", fetcher);
+  const { data, mutate } = useSWR("/api/messages", fetcher);
+
+  useEffect(() => {
+    const channel = pusher.client.subscribe("message");
+    channel.bind("new-message", async (msg: IMessageDetail) => {
+      if (data?.find((message) => message.id === msg.id)) return;
+      if (msg) {
+        const optimisticData: IMessageDetail[] = data?.length
+          ? [...data, msg]
+          : [];
+        mutate(fetcher, { optimisticData, rollbackOnError: true });
+      } else mutate(fetcher);
+    });
+
+    return () => {
+      channel.unbind_all();
+      channel.unsubscribe();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, mutate, pusher.client]);
+
   return (
     <section className="overflow-y-scroll px-2 pt-3 pb-28 space-y-5">
       {data?.map((msg, i) => (
