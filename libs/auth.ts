@@ -1,10 +1,4 @@
-import {
-  Awaitable,
-  ISODateString,
-  NextAuthOptions,
-  Session,
-  User,
-} from "next-auth";
+import { Awaitable, NextAuthOptions, User } from "next-auth";
 import { getServerSession } from "next-auth/next";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
@@ -38,15 +32,8 @@ const authOptions: NextAuthOptions = {
 
 const checkAuth = async () => {
   const session = await getServerSession();
-  // if (!session) return redirect("/auth/signin");
-  return {
-    user: {
-      name: "dome",
-      email: "dome@odds.team",
-      image: "https://avatars.githubusercontent.com/u/66314482?v=4",
-    },
-    expires: "",
-  } as Session;
+  if (!session) return redirect("/auth/signin");
+  return session;
 };
 
 const verifyAuth = async () => {
