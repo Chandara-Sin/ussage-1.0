@@ -50,7 +50,7 @@ const MessageSection = ({ initMessage }: { initMessage: IMessageDetail[] }) => {
   const messageList = data || initMessage;
 
   useEffect(() => {
-    const channel = pusher.client.subscribe("message");
+    const channel = pusher.client.subscribe("messages");
     channel.bind("new-message", async (msg: IMessageDetail) => {
       if (data?.find((message) => message.id === msg.id)) return;
       if (msg) {
