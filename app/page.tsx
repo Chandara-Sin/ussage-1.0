@@ -10,9 +10,9 @@ const Home = async () => {
     user: {
       name: "dome",
       email: "dome@odds.team",
-      image: "string | null",
+      image: "https://avatars.githubusercontent.com/u/66314482?v=4",
     },
-    expires: new Date(Date.now() + 1).toISOString(),
+    expires: new Date().setDate(new Date().getDate() + 1).toLocaleString(),
   };
   const { messages } = await fetch(`${baseURL}/api/messages`, {
     cache: "reload",
