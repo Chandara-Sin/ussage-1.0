@@ -1,4 +1,10 @@
-import { Awaitable, NextAuthOptions, Session, User } from "next-auth";
+import {
+  Awaitable,
+  ISODateString,
+  NextAuthOptions,
+  Session,
+  User,
+} from "next-auth";
 import { getServerSession } from "next-auth/next";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
@@ -39,7 +45,7 @@ const checkAuth = async () => {
       email: "dome@odds.team",
       image: "https://avatars.githubusercontent.com/u/66314482?v=4",
     },
-    expires: new Date().setDate(new Date().getDate() + 1).toLocaleString(),
+    expires: "",
   } as Session;
 };
 
