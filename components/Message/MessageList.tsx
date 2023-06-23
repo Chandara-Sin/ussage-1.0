@@ -6,6 +6,7 @@ import Image from "next/image";
 import { IMessageDetail } from "@/interfaces/ChatInputType";
 import { useEffect } from "react";
 import pusher from "@/libs/pusher";
+import TimeAgo from "react-timeago";
 
 const Message = ({ msg }: { msg: IMessageDetail }) => {
   const isUser = true;
@@ -37,7 +38,7 @@ const Message = ({ msg }: { msg: IMessageDetail }) => {
               isUser ? "text-right" : ""
             }`}
           >
-            {new Date(msg.created_at).toLocaleString()}
+            <TimeAgo date={new Date(msg.created_at)} />
           </p>
         </section>
       </figure>
