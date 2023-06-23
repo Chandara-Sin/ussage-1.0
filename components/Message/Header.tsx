@@ -1,4 +1,7 @@
-import { BackArrow, Phone, Video } from "@/svg/Icons";
+"use client";
+
+import { BackArrow } from "@/svg/Icons";
+import { signOut } from "next-auth/react";
 import Image from "next/image";
 
 const Header = () => (
@@ -22,8 +25,12 @@ const Header = () => (
       </figure>
     </section>
     <section className="flex items-center justify-center space-x-8 mx-4">
-      <Video className="text-xl text-gray-400" />
-      <Phone className="text-xl text-gray-400" />
+      <button
+        className="bg-cyan-500 text-white px-4 py-2 rounded-xl hover:bg-cyan-600"
+        onClick={() => signOut()}
+      >
+        Sign out
+      </button>
     </section>
   </header>
 );
