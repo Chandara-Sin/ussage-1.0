@@ -5,7 +5,7 @@ import useSWR from "swr";
 import Image from "next/image";
 import { IMessageDetail } from "@/interfaces/ChatInputType";
 import { useEffect } from "react";
-import pusher from "@/pusher";
+import pusher from "@/libs/pusher";
 
 const Message = ({ msg }: { msg: IMessageDetail }) => {
   const isUser = true;

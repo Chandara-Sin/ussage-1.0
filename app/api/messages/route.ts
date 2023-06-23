@@ -1,6 +1,6 @@
 import { IMessageDetail } from "@/interfaces/ChatInputType";
-import pusher from "@/pusher";
-import redis from "@/store";
+import pusher from "@/libs/pusher";
+import redis from "@/libs/store";
 import { NextResponse } from "next/server";
 
 import { v4 as uuid } from "uuid";
