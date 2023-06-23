@@ -1,13 +1,11 @@
 import ChatInput from "@/components/Message/ChatInput";
 import Header from "@/components/Message/Header";
 import MessageSection from "@/components/Message/MessageList";
-import { checkAuth } from "@/libs/auth";
 import { Session } from "next-auth";
 
 const baseURL = process.env.VERCEL_URL ?? "http://localhost:3000";
 
 const Home = async () => {
-  // const session = await checkAuth();
   const session: Session = {
     user: {
       name: "dome",
