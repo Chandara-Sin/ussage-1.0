@@ -33,9 +33,9 @@ const CredentialSignIn = () => {
         Sign in
       </button>
       <section className="relative flex items-center mt-5">
-        <span className="flex-grow border-t border-gray-400"></span>
+        <i className="flex-grow border-t border-gray-400"></i>
         <span className="flex-shrink mx-4 text-gray-400">OR</span>
-        <span className="flex-grow border-t border-gray-400"></span>
+        <i className="flex-grow border-t border-gray-400"></i>
       </section>
     </form>
   );
