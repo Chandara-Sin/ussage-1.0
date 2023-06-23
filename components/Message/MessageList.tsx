@@ -7,9 +7,17 @@ import { IMessageDetail } from "@/interfaces/ChatInputType";
 import { useEffect } from "react";
 import pusher from "@/libs/pusher";
 import TimeAgo from "react-timeago";
+import { Session } from "next-auth";
+import { setEngine } from "crypto";
 
-const Message = ({ msg }: { msg: IMessageDetail }) => {
-  const isUser = true;
+const Message = ({
+  msg,
+  session,
+}: {
+  msg: IMessageDetail;
+  session: Session | null;
+}) => {
+  const isUser = session?.user?.email === msg.email;
   const { profileImgURL, message } = msg;
   return (
     <article className={`w-fit flex items-end ${isUser ? "ml-auto" : ""}`}>
@@ -46,7 +54,13 @@ const Message = ({ msg }: { msg: IMessageDetail }) => {
   );
 };
 
-const MessageSection = ({ initMessage }: { initMessage: IMessageDetail[] }) => {
+const MessageSection = ({
+  initMessage,
+  session,
+}: {
+  initMessage: IMessageDetail[];
+  session: Session | null;
+}) => {
   const { data, mutate } = useSWR("/api/messages", fetcher);
   const messageList = data || initMessage;
 
@@ -72,7 +86,7 @@ const MessageSection = ({ initMessage }: { initMessage: IMessageDetail[] }) => {
   return (
     <section className="overflow-y-scroll px-2 pt-3 pb-28 space-y-5">
       {messageList.map((msg, i) => (
-        <Message msg={msg} key={i} />
+        <Message msg={msg} key={i} session={session} />
       ))}
     </section>
   );

@@ -3,12 +3,13 @@
 import fetcher from "@/api/message";
 import { IMessageDetail } from "@/interfaces/ChatInputType";
 import { PaperPlan } from "@/svg/Icons";
+import { Session } from "next-auth";
 import { ChangeEvent, FormEvent, useId, useState } from "react";
 import useSWR from "swr";
 
-const ChatInput = () => {
+const ChatInput = ({ session }: { session: Session | null }) => {
   const [message, setMessage] = useState("");
-  const { data, error, mutate } = useSWR("/api/messages", fetcher);
+  const { data, mutate } = useSWR("/api/messages", fetcher);
   const id = useId();
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -23,9 +24,9 @@ const ChatInput = () => {
       id,
       message: newMsg,
       created_at: Date.now(),
-      username: "dome",
-      profileImgURL: "https://avatars.githubusercontent.com/u/66314482?v=4",
-      email: "dome@sc.com",
+      username: session?.user?.name || "",
+      profileImgURL: session?.user?.image || "",
+      email: session?.user?.email || "",
     };
     await handleCreateMessage(msgDetails);
     setMessage("");
