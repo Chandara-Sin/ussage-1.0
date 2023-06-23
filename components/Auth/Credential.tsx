@@ -18,25 +18,25 @@ const CredentialSignIn = () => {
       <h1 className="mt-3 text-2xl font-semibold text-gray-800 capitalize font-mono">
         sign In
       </h1>
-      <div className="relative flex items-center mt-8">
+      <section className="relative flex items-center mt-8">
         <input
           type="email"
           className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-4 focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
           placeholder="Enter your email"
           name="email"
         />
-      </div>
+      </section>
       <button
         className="w-full mt-5 px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50 font-mono"
         type="submit"
       >
         Sign in
       </button>
-      <div className="relative flex items-center mt-5">
+      <section className="relative flex items-center mt-5">
         <span className="flex-grow border-t border-gray-400"></span>
         <span className="flex-shrink mx-4 text-gray-400">OR</span>
         <span className="flex-grow border-t border-gray-400"></span>
-      </div>
+      </section>
     </form>
   );
 };
