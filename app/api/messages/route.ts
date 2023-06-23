@@ -10,7 +10,7 @@ const POST = async (_req: Request) => {
     const { message } = await _req.json();
     const reqMsg = { ...message, id: uuid(), created_at: Date.now() };
     await redis.hset("messages", reqMsg.id, JSON.stringify(reqMsg));
-    pusher.server.trigger("messages", "new-messages", reqMsg);
+    pusher.server.trigger("messages", "new-message", reqMsg);
     return NextResponse.json({ message: reqMsg }, { status: 200 });
   } catch (error) {
     NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
