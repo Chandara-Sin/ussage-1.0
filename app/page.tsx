@@ -6,14 +6,15 @@ import { checkAuth } from "@/libs/auth";
 const baseURL = process.env.VERCEL_URL ?? "http://localhost:3000";
 
 const Home = async () => {
+  const session = await checkAuth();
   const { messages } = await fetch(`${baseURL}/api/messages`, {
     cache: "reload",
   }).then((res) => res.json());
   return (
     <main className="min-h-screen bg-slate-100">
-      <Header session={null} />
-      <MessageSection initMessage={messages} session={null} />
-      <ChatInput session={null} />
+      <Header session={session} />
+      <MessageSection initMessage={messages} session={session} />
+      <ChatInput session={session} />
     </main>
   );
 };
