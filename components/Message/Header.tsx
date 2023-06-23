@@ -28,7 +28,10 @@ const Header = ({ session }: { session: Session | null }) => (
     <section className="flex items-center justify-center space-x-8 mx-4">
       <button
         className="bg-cyan-500 text-white px-4 py-2 rounded-xl hover:bg-cyan-600"
-        onClick={() => signOut()}
+        onClick={(e) => {
+          e.preventDefault();
+          signOut();
+        }}
       >
         Sign out
       </button>
