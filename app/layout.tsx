@@ -5,18 +5,19 @@ import { Metadata } from "next";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ussage-1-0.vercel.app"),
   title: "Ussage",
   description: "Ussage Chat App",
   openGraph: {
     type: "website",
-    url: "ussage-1-0.vercel.app",
+    url: "https://ussage-1-0.vercel.app",
     title: "Ussage - Your Ultimate Messaging Companion",
     description:
       "Ussage: Instant messaging, voice/video calls, privacy, and more.",
     siteName: "Ussage",
     images: [
       {
-        url: "ussage-1-0.vercel.app",
+        url: "https://assets.vercel.com/image/upload/front/nextjs/twitter-card.png",
       },
     ],
   },
