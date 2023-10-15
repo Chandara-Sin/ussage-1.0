@@ -2,7 +2,7 @@ import Pusher from "pusher";
 import ClientPusher from "pusher-js";
 
 const server = new Pusher({
-  appId: process.env.PUSHER_SERVER_APPID ?? "",
+  appId: process.env.PUSHER_SERVER_APP_ID ?? "",
   key: process.env.PUSHER_SERVER_KEY ?? "",
   secret: process.env.PUSHER_SERVER_SECRET ?? "",
   cluster: "ap1",
