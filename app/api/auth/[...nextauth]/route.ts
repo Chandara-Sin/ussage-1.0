@@ -1,11 +1,11 @@
 import { Awaitable, NextAuthOptions, User } from "next-auth";
 import NextAuth from "next-auth/next";
-import Credentials from "next-auth/providers/credentials";
-import Google from "next-auth/providers/google";
+import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
 
 const authOptions: NextAuthOptions = {
   providers: [
-    Credentials({
+    CredentialsProvider({
       name: "Credentials",
       credentials: {
         email: {
@@ -21,7 +21,7 @@ const authOptions: NextAuthOptions = {
         name: "dome",
       }),
     }),
-    Google({
+    GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID ?? "",
       clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
     }),

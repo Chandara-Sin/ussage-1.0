@@ -1,6 +1,6 @@
-import ChatInput from "@/components/Message/ChatInput";
-import Header from "@/components/Message/Header";
-import MessageSection from "@/components/Message/MessageList";
+import ChatInput from "@/components/message/chat-input";
+import Header from "@/components/message/header";
+import MessageSection from "@/components/message/message-list";
 import { checkAuth } from "@/libs/auth";
 
 const baseURL = process.env.VERCEL_URL ?? "http://localhost:3000";

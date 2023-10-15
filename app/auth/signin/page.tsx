@@ -1,7 +1,6 @@
-import Credential from "@/components/Auth/Credential";
-import Google from "@/components/Auth/Google";
+import Credential from "@/app/auth/signin/components/credential";
+import Google from "@/app/auth/signin/components/google";
 import { verifyAuth } from "@/libs/auth";
-import { getProviders } from "next-auth/react";
 
 const SignInPage = async () => {
   await verifyAuth();
