@@ -1,6 +1,6 @@
 "use client";
 
-import fetcher from "@/api/message";
+import fetcher from "@/libs/fetcher";
 import { IMessageDetail } from "@/interfaces/ChatInputType";
 import { PaperPlan } from "@/svg/Icons";
 import { Session } from "next-auth";

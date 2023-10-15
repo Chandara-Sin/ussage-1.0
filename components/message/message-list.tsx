@@ -1,6 +1,6 @@
 "use client";
 
-import fetcher from "@/api/message";
+import fetcher from "@/libs/fetcher";
 import useSWR from "swr";
 import Image from "next/image";
 import { IMessageDetail } from "@/interfaces/ChatInputType";
