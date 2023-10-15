@@ -53,15 +53,8 @@ const Message = ({
   );
 };
 
-const MessageSection = ({
-  initMessage,
-  session,
-}: {
-  initMessage: IMessageDetail[];
-  session: Session | null;
-}) => {
+const MessageSection = ({ session }: { session: Session | null }) => {
   const { data, mutate } = useSWR("/api/messages", fetcher);
-  const messageList = data || initMessage;
 
   useEffect(() => {
     const channel = pusher.client.subscribe("messages");
@@ -84,7 +77,7 @@ const MessageSection = ({
 
   return (
     <section className="overflow-y-scroll px-2 pt-3 pb-28 space-y-5">
-      {messageList.map((msg, i) => (
+      {data?.map((msg, i) => (
         <Message msg={msg} key={i} session={session} />
       ))}
     </section>
