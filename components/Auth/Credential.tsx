@@ -4,19 +4,18 @@ import { signIn } from "next-auth/react";
 import { FormEvent } from "react";
 
 const CredentialSignIn = () => {
-  const baseURL = process.env.VERCEL_URL ?? "http://localhost:3000";
   const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     await signIn("credentials", {
       email: formData.get("email"),
-      callbackUrl: baseURL,
+      redirect: false,
     });
   };
   return (
     <form className="w-full max-w-md" onSubmit={handleOnSubmit}>
       <h1 className="mt-3 text-2xl font-semibold text-gray-800 capitalize font-mono">
-        sign In
+        Sign In
       </h1>
       <section className="relative flex items-center mt-8">
         <input
