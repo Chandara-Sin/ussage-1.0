@@ -11,8 +11,8 @@
   "dependencies": {
     "encoding": "^0.1.13",
     "ioredis": "^5.3.2",
-    "next": "^13.5.4",
-    "next-auth": "^4.23.2",
+    "next": "^14.0.3",
+    "next-auth": "^4.24.5",
     "pusher": "^5.2.0",
     "pusher-js": "^8.4.0-rc1",
     "react": "^18.2.0",
