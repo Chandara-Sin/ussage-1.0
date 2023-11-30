@@ -2139,17 +2139,17 @@ punycode@^2.1.0:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.3.0.tgz#f67fa67c94da8f4d0cfff981aee4118064199b8f"
   integrity sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==
 
-pusher-js@^8.3.0:
-  version "8.3.0"
-  resolved "https://registry.yarnpkg.com/pusher-js/-/pusher-js-8.3.0.tgz#a40d76c373a56ba8b3de2c55414380cb49975207"
-  integrity sha512-6GohP06WlVeomAQQe9qWh1IDzd3+InluWt+ZUOcecVK1SEQkg6a8uYVsvxSJm7cbccfmHhE0jDkmhKIhue8vmA==
+pusher-js@^8.4.0-rc1:
+  version "8.4.0-rc1"
+  resolved "https://registry.yarnpkg.com/pusher-js/-/pusher-js-8.4.0-rc1.tgz#8f860648628f4d0bae0c8ea9a5f3b9f693474bab"
+  integrity sha512-LsoU276ETnhMnX1bEvtzPgfIdjPRRpfbAjbzIqDU1TydwQSrepTeNFvK6n0ZkmPAPBqhjuIg5aUbnOyEQ+2hYQ==
   dependencies:
     tweetnacl "^1.0.3"
 
-pusher@^5.1.3:
-  version "5.1.3"
-  resolved "https://registry.yarnpkg.com/pusher/-/pusher-5.1.3.tgz#c6b8e67f53a69dd1af344aab2571eb36fbce2a28"
-  integrity sha512-Bmy5guFxQsbYSFLF3CM7GA2qE1zDJYn51PnNme9QlSjGguvkqUg4nj31PbgiLVDFK2sJvxPfx4JrB2HLgM3kaw==
+pusher@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/pusher/-/pusher-5.2.0.tgz#cc208d15000f8d4d8b485acb844d7557adb2cf20"
+  integrity sha512-F6LNiZyJsIkoHLz+YurjKZ1HH8V1/cMggn4k97kihjP3uTvm0P4mZzSFeHOWIy+PlJ2VInJBhUFJBYLsFR5cjg==
   dependencies:
     "@types/node-fetch" "^2.5.7"
     abort-controller "^3.0.0"
