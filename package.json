@@ -11,10 +11,10 @@
   "dependencies": {
     "encoding": "^0.1.13",
     "ioredis": "^5.3.2",
-    "next": "^14.0.3",
+    "next": "^14.0.4",
     "next-auth": "^4.24.5",
     "pusher": "^5.2.0",
-    "pusher-js": "^8.4.0-rc1",
+    "pusher-js": "^8.4.0-rc2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-timeago": "^7.2.0",
@@ -22,16 +22,16 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@types/node": "^20.10.1",
-    "@types/react": "^18.2.39",
+    "@types/node": "^20.10.4",
+    "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@types/react-timeago": "^4.1.6",
     "@types/uuid": "^9.0.7",
     "autoprefixer": "^10.4.16",
-    "eslint": "^8.54.0",
-    "eslint-config-next": "^14.0.3",
-    "postcss": "^8.4.31",
-    "tailwindcss": "^3.3.5",
+    "eslint": "^8.55.0",
+    "eslint-config-next": "^14.0.4",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.3.6",
     "typescript": "^5.3.2"
   }
 }
